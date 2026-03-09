@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="reintegro/favicon.png">
+    <link rel="preload" as="image" href="reintegro/fondo.jpg" fetchpriority="high">
+    <title>Predicción La Primitiva</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ececec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            margin: 0;
+            padding: 20px;
+            background-image: url('reintegro/fondo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgb(49, 45, 45);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #008547;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .fecha {
+            font-size: 12px;
+        }
+        .titulo {
+            font-size: 20px;
+            text-align: center;
+            flex-grow: 1;
+            letter-spacing: 1px;
+            cursor: default;
+        }
+        .content {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .combinacion {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .numero {
+            width: 60px;
+            height: 60px;
+            background-color: #008547;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-left: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: default;
+        }
+        .reintegro-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-left: 15px;  
+        }
+        .label-reintegro {
+            color: #008547;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .reintegro {
+            width: 60px;
+            height: 60px;
+            background-color: #008547;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: default;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        .mensaje-fecha {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #008547;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        .bola {
+            transform: scale(0);
+            opacity: 0;
+        }
+        .bola.visible {
+            animation: aparecerBola 0.5s ease forwards;
+        }
+        @keyframes aparecerBola {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="fecha">Último sorteo: 2026-03-07</div>
+            <div class="titulo">COMBINACIÓN PRÓXIMO SORTEO</div>
+            <div style="width: 120px;"></div> <!-- Espaciador para centrar -->
+        </div>
+        
+        <div class="mensaje-fecha">
+            Predicción basada en datos hasta 2026-03-07
+        </div>
+        
+        <div class="content">
+            <div class="combinacion">
+                <div class="numero bola">1</div>
+                <div class="numero bola">5</div>
+                <div class="numero bola">30</div>
+                <div class="numero bola">36</div>
+                <div class="numero bola">38</div>
+                <div class="numero bola">47</div>
+            </div>
+            
+            <div class="reintegro-container">
+                <div class="label-reintegro">Reintegro</div>
+                <div class="reintegro bola">7</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © <span id="fecha-actual"></span> · Sistema desarrollado con Machine Learning y análisis estadístico avanzado
+        </div>
+    </div>
+<script>
+    document.getElementById('fecha-actual').innerText = new Date().getFullYear().toString();
+    const bolas = document.querySelectorAll('.bola');
+    bolas.forEach((bola, i) => {
+        setTimeout(() => {
+            bola.classList.add("visible");
+        }, i * 300);
+    }); 
+</script>    
+</body>
+</html>
